@@ -27,7 +27,7 @@ This repo contains the following:
 
 
 ## Overview of the Analysis:
-The overall purposes of this analysis is to understand whether a parsimonous model can be built to assist decision-makers within the Alphabet Soup Charity with classifying potential future applicants into those likely to successed in their ventures (i.e., successful; 1) or not (i.e., unsuccessful; 0). To assist with this, the Alphabet Soup Charity provided data on 34,000 organisations that have previously received funding over the years. 
+The overall purposes of this analysis is to understand whether a parsimonous model can be built to assist decision-makers within the Alphabet Soup Charity with classifying potential future applicants into those likely to successed in their ventures (i.e., successful; 1) or not (i.e., unsuccessful; 0). To assist with this, the Alphabet Soup Charity provided data on 34,000 organisations that have previously received funding, 18,261 (53.24%) of which were classified as successful (i.e., 1), and 16,038 (46.76%) of which were classified as unsuccessful (i.e., 0).   
 
 Several potential predictors of funding success were also included in this training dataset:
 * **EIN** and **NAME:** identification columns;
