@@ -83,9 +83,9 @@ The following steps were used to build and evaluate the performance of the initi
 
 
 ### Compiling, Training, and Evaluating the Model"
-* Number of neurons, layers, and activation functions used: detailed in the sections below separately for the **initial model** and the **optimised model**.
-* Ability to achieve the target model performance: despite optimisation using **keras-tuner** the performance of the optimal model remained 73%, lower than the target model performance of 75%.
-* Steps taken to increase model performance: as detailed in the sections below, to optimise the model the number of hidden layers was increased from 2 to 6, the number of neurons per layer was reduced from between 30-80 to between 5-9, and the activation functions were reduced in complexity from relu to sigmoid.
+* Number of neurons, layers, and activation functions used: detailed in the **Overall Model Performance** section separately for the initial model and the optimised model.
+* Ability to achieve the target model performance: as detained in the **Overal Model Performance** section, despite optimisation using **keras-tuner** the performance of the optimal model remained 73%, lower than the target model performance of 75%.
+* Steps taken to increase model performance: as detailed in the **Overal Model Performance** section, after optimisation the number of hidden layers was increased from 2 to 6, the number of neurons per layer was reduced from between 30-80 to between 5-9, and the activation functions were reduced in complexity from relu to sigmoid.
 
 
 ### Overall Model Performance:
@@ -114,15 +114,11 @@ Overall, the accuracy of the optimised model is also 0.73, indicating that, desp
 
 
 ## Summary:
-The logistic regression model performs exceptionally well in predicting healthy, low-risk loans (i.e., 100% precision, 100% recall). However, perhaps owing to the unbalanced nature of the training dataset, despite stratification, the model predicts unhealthy, high-risk loans less accurately, with lower precision (87%) and recall (89%). Despite this, the overall accuracy of the model is 99%, indicating that the model is highly reliable. The macro average (94%) indicates that the model maintains good performance across both classes, even when considering them equally, and the weighted average (99%) shows that the model's overall performance is excellent, albeit heavily influenced by the larger number of healthy loans. 
-
-In choosing which model to recommend, consideration must be given to the consequences of misclassifying either a healthy or unhealthy loan. For lenders, the consequences of loaning to a potential defaulter far outweigh those of refusing to loan to a good creditor. Therefore, when trying to classify loans, greater consideration should be given to recall than precision. This is because a high recall minimises the chances of missing potential defaulters, ensuring that most of the risky loans are identified, even if it means potentially rejecting some good creditors.
+The optimised neural network model performs acceptably well in predicting successful grant applicants, with an the overall accuracy of 73%. However, despite auto-optimisation, the model performance remained at 73%, slightly lower than the target performance of 75%. Given this, it may be approriate to attempt classification using a more complex model, such as Random Forest. This method not only will help improve classificaiton accuracy, it may also help in the identification of which variables are explain the most or least in determining whether a funding applicant is likely to succeed in their venture or not.
 
 
 ## Credits:
-This code was compiled and written by me for the credit-risk-classification challenge project in the 2024 Data Analytics Boot Camp hosted by Monash University. 
-
-
+This code was compiled and written by me for the credit-risk-classification challenge project in the 2024 Data Analytics Boot Camp hosted by Monash University. Additional credits are declared below.
 
 ### Saving model outputs as HDF5 file:
 https://www.tensorflow.org/tutorials/keras/save_and_load#hdf5_format (Accessed 22 July 2024).
