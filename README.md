@@ -42,7 +42,29 @@ Several potential predictors of funding success were also included in this train
 * **ASK_AMT:** funding amount requested;
 * **IS_SUCCESSFUL:** whether or not the money was used effectively, coded as 1 ("yes") or 0 ("no") (i.e., the target variable).
 
-After reading in the original **lending_data.csv**, the following steps were used to build and evaluate the performance of the model:
+The following steps were used to build and evaluate the performance of the initial model:
+1. Read in the **charity_data.csv** to a Pandas DataFrame;
+2. Define the target variable (i.e., **IS_SUCCESSFUL**);
+3. Define the features variables (i.e., excluding the **IS_SUCCESSFUL** column);
+4. Drop the **EIN** and **NAME** columns to deidentify the dataset;
+5. Determine the number of unique values for each column;
+6. For columns that have more than 10 unique values, determine the number of data points for each unique value;
+7. Use the number of data points for each unique value to pick a cutoff point to combine "rare" categorical variables together in a new value, "Other";
+8. Use **pd.get_dummies() function** to encode categorical variables.
+9. Split the preprocessed data into a features array, X, and a target array, y;
+10. Use these arrays and the **train_test_split function** to split the data into training and testing datasets;
+11. Scale the training and testing features datasets by creating a **StandardScaler() function**, fitting it to the training data, then using the transformed function in subsequent steps.
+12. Create a neural network model by assigning the number of input features and nodes for each layer using **TensorFlow** and **Keras**;
+13. Create the first hidden layer using an appropriate activation function;
+14. If necessary, create a second hidden layer using an appropriate activation function;
+15. Create an output layer using an appropriate activation function;
+16. Check the structure of the model;
+17. Compile and train the model; 
+18. Create a callback that saves the model's weights every five epochs;
+19. Evaluate the model using the test data to determine the loss and accuracy, and;
+20. Save and export results to an HDF5 file, named **AlphabetSoupCharity.h5**.
+
+
 1. columns were separated into the target variable (y; i.e., **loan_status**) and features (X, i.e., **loan_size**, **interest_rate**,	**borrower_income**,	**debt_to_income**,	**num_of_accounts**,	**derogatory_marks**,	**total_debt**);
 2. The data was split using a 75/25 ratio into a training set and a testing set. Owing to the imbalanced nature of the original data, this split was stratified by the target variable to ensure adequate proportions of unhealthy or high-risk loans were represented in the training dataset;
 3. A logistic regression model was then built, using data only for the training set;
