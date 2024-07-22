@@ -42,6 +42,7 @@ Several potential predictors of funding success were also included in this train
 * **ASK_AMT:** funding amount requested;
 * **IS_SUCCESSFUL:** whether or not the money was used effectively, coded as 1 ("yes") or 0 ("no") (i.e., the target variable).
 
+### Initial Model:
 The following steps were used to build and evaluate the performance of the initial model:
 1. Read in the **charity_data.csv** to a Pandas DataFrame;
 2. Define the target variable (i.e., **IS_SUCCESSFUL**);
@@ -60,28 +61,56 @@ The following steps were used to build and evaluate the performance of the initi
 15. Create an output layer using an appropriate activation function;
 16. Check the structure of the model;
 17. Compile and train the model; 
-18. Create a callback that saves the model's weights every five epochs;
+18. Create a callback that saves the initial model's weights every five epochs;
 19. Evaluate the model using the test data to determine the loss and accuracy, and;
 20. Save and export results to an HDF5 file, named **AlphabetSoupCharity.h5**.
 
-
-1. columns were separated into the target variable (y; i.e., **loan_status**) and features (X, i.e., **loan_size**, **interest_rate**,	**borrower_income**,	**debt_to_income**,	**num_of_accounts**,	**derogatory_marks**,	**total_debt**);
-2. The data was split using a 75/25 ratio into a training set and a testing set. Owing to the imbalanced nature of the original data, this split was stratified by the target variable to ensure adequate proportions of unhealthy or high-risk loans were represented in the training dataset;
-3. A logistic regression model was then built, using data only for the training set;
-4. Using this model, loan predictions were then made, using data only for the testing set;
-5. Model performance was then evaluated using a confusion matrix and a classification report.
+### Optimised Model:
+The following steps were used to build and evaluate the performance of the initial model:
+1. Follow Steps 1-11 as above;
+2. Using **keras-tuner** create an auto-optimiser function to determine the best combination of hidden layers (i.e., layers), neurons per layer (i.e., inputs), and activation furnctions (i.e., activations) (i.e., the hyperparameters), ranking these by their accuracy performance;
+3. Compile and train the model with the optimal combination of hyperparameters; 
+18. Create a callback that saves the optimised model's weights every five epochs;
+19. Evaluate the model using the test data to determine the loss and accuracy, and;
+20. Save and export results to an HDF5 file, named **AlphabetSoupCharity_Optimisation.h5**.
 
 
 ## Results:
-Overall, the  accuracy of the model is 0.99, indicating that it correctly classifies 99% of the instances.
+### Data Preprocessing:
+* Target variable: **IS_SUCCESSFUL:** indicates whether or not the money was used effectively, coded as 1 ("yes") or 0 ("no").
+* Features variables: listed within **Overview of the Analysis** section above.
+* Variables removed from the input data because they are neither targets nor features: **EIN** and **NAME**. 
 
-**Precision:**
-* Healthy Loans: 1.00
-* Unhealth Loans: 0.87
 
-**Recall:**
-* Healthy Loans: 1.00
-* Unhealth Loans: 0.89
+### Compiling, Training, and Evaluating the Model"
+* Number of neurons, layers, and activation functions used: detailed in the sections below separately for the **initial model** and the **optimised model**.
+* Ability to achieve the target model performance: despite optimisation using **keras-tuner** the performance of the optimal model remained 73%, lower than the target model performance of 75%.
+* Steps taken to increase model performance: as detailed in the sections below, to optimise the model the number of hidden layers was increased from 2 to 6, the number of neurons per layer was reduced from between 30-80 to between 5-9, and the activation functions were reduced in complexity from relu to sigmoid.
+
+
+### Overall Model Performance:
+#### Initial Model:
+The hyperparameters of the initial model are as follows:
+* Number of input features: len(X_train[0]);
+* Input layer: neurons = 80, activation function = relu;
+* Second hidden layer: neurons = 30, activation function = relu;
+* Output layer: neurons = 1, activation function = sigmoid.
+
+Overall, using these hyperparameters, the accuracy of the initial model is 0.73, indicating that it correctly classifies 73% of the instances.
+
+
+#### Optimised Model:
+The hyperparameters of the optimised model are as follows:
+* Number of input features: len(X_train[0]);
+* Input layer: neurons = 7, activation function = sigmoid;
+* Second hidden layer: neurons = 9, activation function = sigmoid;
+* Third hidden layer: neurons = 5, activation function = sigmoid;
+* Fourth hidden layer: neurons = 7, activation function = sigmoid;
+* Fifth hidden layer: neurons 9, activation function = sigmoid;
+* Sixth hidden layer: neurons = 9, activation function = sigmoid;
+* Output layer: neurons = 1, activation function = sigmoid.
+
+Overall, the accuracy of the optimised model is also 0.73, indicating that, despite tuning, the model still only correctly classifies 73% of the instances.
 
 
 ## Summary:
