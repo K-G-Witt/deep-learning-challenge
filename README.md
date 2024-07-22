@@ -27,16 +27,20 @@ This repo contains the following:
 
 
 ## Overview of the Analysis:
-The overall purposes of this analysis is to understand whether a parsimonous model can be built to assist lenders with classifying potential future loan applicants into those likely to pay their loan back on time (i.e., healthy or low-risk; 0) or not (i.e., unhealthy or high-risk; 1). To assist with this, lenders provided data on 77,536 loans, 75,036 (96.78%) of which were labelled as healthy and 2,500 (3.22%) of which were labelled as unhealthy, as summarised by the **loan_status** column (i.e., the target variable).
+The overall purposes of this analysis is to understand whether a parsimonous model can be built to assist decision-makers within the Alphabet Soup Charity with classifying potential future applicants into those likely to successed in their ventures (i.e., successful; 1) or not (i.e., unsuccessful; 0). To assist with this, the Alphabet Soup Charity provided data on 34,000 organisations that have previously received funding over the years. 
 
-Several potential predictors of loan status (i.e, healthy vs. unhealthy) were also included in this training dataset:
-1. **loan_size:** the loan amount requested, in AUD;
-2. **interest_rate:** the interest rate applied to the loan;
-3. **borrower_income:** the borrower's total income, in AUD, at application;
-5. **debt_to_income:** the ratio of the borrower's total debt, in AUD, to their income, in AUD, at application;
-6. **num_accounts:** the number of current accounts the borrower held at application,
-7. **derogatory_marks:** whether any derogatory_marks were held about the borrower at application (boolean format), and
-8. **total_debt:** the borrower's total debt, in AUD.
+Several potential predictors of funding success were also included in this training dataset:
+* **EIN** and **NAME:** identification columns;
+* **APPLICATION_TYPE:** Alphabet Soup application type;
+* **AFFILIATION:** affiliated sector of industry;
+* **CLASSIFICATION:** Government organisation classification;
+* **USE_CASE:** use case for funding;
+* **ORGANIZATION:** organisation type;
+* **STATUS:** active status;
+* **INCOME_AMT:** income classification;
+* **SPECIAL_CONSIDERATIONS:** special considerations for application;
+* **ASK_AMT:** funding amount requested;
+* **IS_SUCCESSFUL:** whether or not the money was used effectively, coded as 1 ("yes") or 0 ("no") (i.e., the target variable).
 
 After reading in the original **lending_data.csv**, the following steps were used to build and evaluate the performance of the model:
 1. columns were separated into the target variable (y; i.e., **loan_status**) and features (X, i.e., **loan_size**, **interest_rate**,	**borrower_income**,	**debt_to_income**,	**num_of_accounts**,	**derogatory_marks**,	**total_debt**);
