@@ -20,8 +20,10 @@ You may need to install the **scikit-learn** and **keras-tuner** packages before
 
 ## Usage Instructions:
 This repo contains the following:
-1. **lending_data.csv:** training data on 77,536 loans, labelled as either healthy (i.e., low-risk; 0) or unhealthy (i.e., high-risk; 0) as summarised by the **loan_status** column (i.e., the target variable). 
-2. **credit_risk_classification.ipynb:** a python script, executed in JupyterLab, to reproduce the analyses.
+1. **Starter_Code.ipynb:** a python script, executed in JupyterLab, to reproduce the analyses for the initial neural network model.
+2. **AlphabetSoupCharity.h5:** a HDF5 binary data formatted file, storing results from the initial neural network model.
+3. **AlphabetSoupCharity_Optimisation.ipynb:** a python script, executed in JupyterLab, to reproduce the auto-optimised neural network model using keras-tuner.
+4. **AlphabetSoupCharity_Optimisation.h5:** a HDF5 binary data formatted file, storing results from the optimised neural network model.
 
 
 ## Overview of the Analysis:
