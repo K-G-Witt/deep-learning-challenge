@@ -118,7 +118,7 @@ The optimised neural network model performs acceptably well in predicting succes
 
 
 ## Credits:
-This code was compiled and written by me for the credit-risk-classification challenge project in the 2024 Data Analytics Boot Camp hosted by Monash University. Additional credits are declared below.
+This code was compiled and written by me for the deep-learning-challenge project in the 2024 Data Analytics Boot Camp hosted by Monash University. Additional credits are declared below.
 
 ### Saving model outputs as HDF5 file:
 https://www.tensorflow.org/tutorials/keras/save_and_load#hdf5_format (Accessed 22 July 2024).
